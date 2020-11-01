@@ -27,8 +27,8 @@ const SELF_CLOSING_TAGS: Readonly<string[]> = [
   `track`,
   `wbr`,
 ];
-const RENAME_ASSETS: boolean = false;
-const SRC_DIR: string = `/images`;
+const RENAME_ASSETS: boolean = true;
+const SRC_DIR: string = `/sites/default/files`;
 const TAB_CHAR: string = `  `;
 
 // ES3 Polyfills
@@ -902,31 +902,47 @@ const writeHTML = (_: ResponsiveImageInfo): void => {
   if (_.contexts.length > 1) {
     writeTag(
       (tabs) => {
-        for (let i: number = _.contexts.length - 1; i >= 1; i--) {
-          const assets: Readonly<Asset[]> = _.assets[_.contexts[i]]!;
-          const minWidth: Readonly<number> =
-            _.dialog.maxWidths[_.contexts[i - 1]]! + 1;
-          const srcset: string[] = [];
+        writeTag(
+          (tabs) => {
+            for (let i: number = _.contexts.length - 1; i >= 1; i--) {
+              const assets: Readonly<Asset[]> = _.assets[_.contexts[i]]!;
+              const minWidth: Readonly<number> =
+                _.dialog.maxWidths[_.contexts[i - 1]]! + 1;
+              const srcset: string[] = [];
 
-          for (let i: number = 0, len: number = assets.length; i < len; i++) {
-            srcset.push(toWebSafeSrc(assets[i], _.dialog.srcDir, true));
-          }
+              for (
+                let i: number = 0, len: number = assets.length;
+                i < len;
+                i++
+              ) {
+                srcset.push(toWebSafeSrc(assets[i], _.dialog.srcDir, true));
+              }
 
-          writeTag(
-            (tabs) => {
-              writeAttr(file, `media`, `(min-width: ${minWidth / 16}em)`, tabs);
-              writeAttr(file, `srcset`, srcset, tabs);
-            },
-            file,
-            `source`,
-            tabs
-          );
-        }
+              writeTag(
+                (tabs) => {
+                  writeAttr(
+                    file,
+                    `media`,
+                    `(min-width: ${minWidth / 16}em)`,
+                    tabs
+                  );
+                  writeAttr(file, `srcset`, srcset, tabs);
+                },
+                file,
+                `source`,
+                tabs
+              );
+            }
 
-        writeImgTag(file, tabs);
+            writeImgTag(file, tabs);
+          },
+          file,
+          `picture`,
+          tabs
+        );
       },
       file,
-      `picture`
+      `div`
     );
   } else {
     writeImgTag(file);
