@@ -51,7 +51,7 @@ We're happy with our work, so we save our document and then the Responsive Image
 
 ![Responsive Image Generator's dialog](./images/usage-support-2.png)
 
-**Note:** The Responsive Image Generator will name your snippet consistently with your Photoshop document's name and write each image's `src` directory as `/images` by default. Configure these if necessary, to meet your own requirements.
+**Note:** The Responsive Image Generator will name your snippet consistently with your Photoshop document's name and write each image's `src` directory as `/sites/default/files` by default. Configure these if necessary, to meet your own requirements.
 
 We enter `"The Mona Lisa"` as `alt` text and press `Save`.
 
@@ -60,10 +60,10 @@ This results in `mona-lisa.html` being generated in the `mona-lisa-assets` direc
 ```html
 <img
   alt="The Mona Lisa"
-  src="/images/mona-lisa.jpg"
+  src="/sites/default/files/mona-lisa.jpg"
   srcset="
-    /images/mona-lisa-@2x.jpg 2x,
-    /images/mona-lisa-@3x.jpg 3x
+    /sites/default/files/mona-lisa-@2x.jpg 2x,
+    /sites/default/files/mona-lisa-@3x.jpg 3x
   "
 />
 ```
@@ -98,25 +98,25 @@ The snippet generated in this instance leverages the `picture` and `source` elem
   <source
     media="(min-width: 48.0625em)"
     srcset="
-      /images/mona-lisa-lge.jpg 1x,
-      /images/mona-lisa-lge-@2x.jpg 2x,
-      /images/mona-lisa-lge-@3x.jpg 3x
+      /sites/default/files/mona-lisa-lge.jpg 1x,
+      /sites/default/files/mona-lisa-lge-@2x.jpg 2x,
+      /sites/default/files/mona-lisa-lge-@3x.jpg 3x
     "
   />
   <source
     media="(min-width: 30.0625em)"
     srcset="
-      /images/mona-lisa-med.jpg 1x,
-      /images/mona-lisa-med-@2x.jpg 2x,
-      /images/mona-lisa-med-@3x.jpg 3x
+      /sites/default/files/mona-lisa-med.jpg 1x,
+      /sites/default/files/mona-lisa-med-@2x.jpg 2x,
+      /sites/default/files/mona-lisa-med-@3x.jpg 3x
     "
   />
   <img
     alt="The Mona Lisa"
-    src="/images/mona-lisa-sml.jpg"
+    src="/sites/default/files/mona-lisa-sml.jpg"
     srcset="
-      /images/mona-lisa-sml-@2x.jpg 2x,
-      /images/mona-lisa-sml-@3x.jpg 3x
+      /sites/default/files/mona-lisa-sml-@2x.jpg 2x,
+      /sites/default/files/mona-lisa-sml-@3x.jpg 3x
     "
   />
 </picture>
