@@ -942,7 +942,7 @@ const writeHTML = (_: ResponsiveImageInfo): void => {
         );
       },
       file,
-      `div`
+      `figure`
     );
   } else {
     writeImgTag(file);

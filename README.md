@@ -94,32 +94,34 @@ As with the last example, we enter `"The Mona Lisa"` as `alt` text and press `Sa
 The snippet generated in this instance leverages the `picture` and `source` elements, with `media` attributes outlining the responsive image's breakpoints:
 
 ```html
-<picture>
-  <source
-    media="(min-width: 48.0625em)"
-    srcset="
-      /sites/default/files/mona-lisa-lge.jpg 1x,
-      /sites/default/files/mona-lisa-lge-@2x.jpg 2x,
-      /sites/default/files/mona-lisa-lge-@3x.jpg 3x
-    "
-  />
-  <source
-    media="(min-width: 30.0625em)"
-    srcset="
-      /sites/default/files/mona-lisa-med.jpg 1x,
-      /sites/default/files/mona-lisa-med-@2x.jpg 2x,
-      /sites/default/files/mona-lisa-med-@3x.jpg 3x
-    "
-  />
-  <img
-    alt="The Mona Lisa"
-    src="/sites/default/files/mona-lisa-sml.jpg"
-    srcset="
-      /sites/default/files/mona-lisa-sml-@2x.jpg 2x,
-      /sites/default/files/mona-lisa-sml-@3x.jpg 3x
-    "
-  />
-</picture>
+<figure>
+  <picture>
+    <source
+      media="(min-width: 48.0625em)"
+      srcset="
+        /sites/default/files/mona-lisa-lge.jpg 1x,
+        /sites/default/files/mona-lisa-lge-@2x.jpg 2x,
+        /sites/default/files/mona-lisa-lge-@3x.jpg 3x
+      "
+    />
+    <source
+      media="(min-width: 30.0625em)"
+      srcset="
+        /sites/default/files/mona-lisa-med.jpg 1x,
+        /sites/default/files/mona-lisa-med-@2x.jpg 2x,
+        /sites/default/files/mona-lisa-med-@3x.jpg 3x
+      "
+    />
+    <img
+      alt="The Mona Lisa"
+      src="/sites/default/files/mona-lisa-sml.jpg"
+      srcset="
+        /sites/default/files/mona-lisa-sml-@2x.jpg 2x,
+        /sites/default/files/mona-lisa-sml-@3x.jpg 3x
+      "
+    />
+  </picture>
+</figure>
 ```
 
 ## Issues
